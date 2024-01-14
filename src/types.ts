@@ -4,3 +4,8 @@ export interface VehicleListing  {
     hasImages: boolean,
     link: string,
 }
+
+export interface VehicleListingCheck extends VehicleListing  {
+    isNewListing: boolean,
+    hasAddedPhotos: boolean,
+}

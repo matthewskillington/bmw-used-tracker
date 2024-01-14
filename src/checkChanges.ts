@@ -1,7 +1,7 @@
 import { readDataFromFile } from "./fileSystem.js";
-import { VehicleListing } from "./types.js";
+import { VehicleListing, VehicleListingCheck } from "./types.js";
 
-export const checkForChanges = async (cars: VehicleListing[]) => {
+export const checkForChanges = async (cars: VehicleListing[]): Promise<VehicleListingCheck[]> => {
     const previousRecord = await readDataFromFile('data.json');
 
     const retrievedListings: VehicleListing[] = Array.isArray(previousRecord) ? 
