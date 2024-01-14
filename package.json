@@ -1,0 +1,17 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --loader ts-node/esm index.ts"
+  },
+  "type": "module",
+  "types": "module",
+  "dependencies": {
+    "puppeteer": "^21.7.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
