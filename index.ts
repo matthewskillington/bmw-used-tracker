@@ -24,7 +24,7 @@ const entry = async () => {
     if(newListings.length > 0) {
          console.log('New listings or photos added since last save!')
          console.log(newListings)
-         sendNotification(`New listings or photos have been posted! ${newListings.map(x => x.link + '')}`)
+         sendNotification(`New listings or photos have been posted! ${newListings.map(x => x.link + '  ')}`)
 
     } else {
         console.log('No updates since last time')
