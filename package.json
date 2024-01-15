@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node --loader ts-node/esm index.ts"
+    "start": "tsc && cd dist && node index.js",
+    "start:gcloud": "npx functions-framework --target=hey"
   },
   "type": "module",
   "types": "module",
@@ -11,6 +12,7 @@
     "puppeteer": "^21.7.0"
   },
   "devDependencies": {
+    "@google-cloud/functions-framework": "^3.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }

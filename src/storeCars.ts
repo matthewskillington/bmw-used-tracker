@@ -9,6 +9,6 @@ export const storeCars = (cars: VehicleListing[]) => {
     const hours = currentDate.getHours().toString().padStart(2, '0');
     const minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
-    writeDataToFile('data/data.json', cars);
-    writeDataToFile(`data/${day}-${month}-${year}-${hours}${minutes}debug.json`, cars);
+    writeDataToFile('../data/data.json', cars);
+    writeDataToFile(`../data/${day}-${month}-${year}-${hours}${minutes}debug.json`, cars);
 }
