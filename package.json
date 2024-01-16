@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && cd dist && node index.js",
-    "start:gcloud": "npx functions-framework --target=hey"
+    "start": "tsc && cd dist && node index.js", 
+    "start:gcloud": "tsc && cd dist && npx functions-framework --target=entry"
   },
   "type": "module",
   "types": "module",
