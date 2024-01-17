@@ -1,5 +1,4 @@
 import { Storage } from '@google-cloud/storage';
-import fs from 'fs/promises';
 import { PassThrough } from 'stream';
 
 const bucketName = 'used-bmw-data'
@@ -7,8 +6,6 @@ const fileName = 'data.json'
 
 export const writeDataToCloudStorage = async (data: any) => {
   const storage = new Storage();
-
-  
   const myBucket = storage.bucket(bucketName);
   const file = myBucket.file(fileName);
 
