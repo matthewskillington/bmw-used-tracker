@@ -1,4 +1,4 @@
-import { writeDataToFile } from "./fileSystem.js";
+import { writeDataToCloudStorage } from "./fileSystem.js";
 import { VehicleListing } from "./types.js";
 
 export const storeCars = (cars: VehicleListing[]) => {
@@ -9,6 +9,5 @@ export const storeCars = (cars: VehicleListing[]) => {
     const hours = currentDate.getHours().toString().padStart(2, '0');
     const minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
-    writeDataToFile('../data/data.json', cars);
-    writeDataToFile(`../data/${day}-${month}-${year}-${hours}${minutes}debug.json`, cars);
+    writeDataToCloudStorage(cars);
 }

@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
-    "start": "tsc && cd dist && node index.js", 
+    "start": "tsc && cd dist && node index.js",
     "start:gcloud": "tsc && cd dist && npx functions-framework --target=entry",
     "gcp-build": "node node_modules/puppeteer/install.mjs"
   },
   "type": "module",
   "types": "module",
   "dependencies": {
+    "@google-cloud/storage": "^7.7.0",
     "puppeteer": "^21.7.0"
   },
   "devDependencies": {
