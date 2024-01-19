@@ -22,10 +22,19 @@ export const entry = async () => {
 
     const newListings = results.filter(x => x.isNewListing || x.hasAddedPhotos);
     if(newListings.length > 0) {
-         console.log('New listings or photos added since last save!')
-         console.log(newListings)
-         sendNotification(`New listings or photos have been posted! ${newListings.map(x => x.link + '  ')}`)
-
+        newListings.map(x => {
+            if(!x.isNewListing && x.hasAddedPhotos) {
+                sendNotification(`New photos have been added to ${x.link}`)
+            } else if(x.isNewListing && x.hasAddedPhotos){
+                sendNotification(`New listing added with photos ${x.link}`)
+            } else if (x.isNewListing && !x.hasAddedPhotos){
+                sendNotification(`New listing added, but no photos yet ${x.link}`)
+            } else{
+                sendNotification(`Something changed on ${x.link}`)
+            }
+        })
+        console.log('New listings or photos added since last save!')
+        console.log(newListings)
     } else {
         console.log('No updates since last time')
     }
@@ -33,7 +42,6 @@ export const entry = async () => {
     storeCars(filtered);
 
     await browser.close();
-
 }
 
  //entry() 
