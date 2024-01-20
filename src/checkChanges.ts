@@ -5,7 +5,7 @@ export const checkForChanges = async (cars: VehicleListing[]): Promise<VehicleLi
     const previousRecord = await readDataFromCloudStorage();
 
     const retrievedListings: VehicleListing[] = Array.isArray(previousRecord) ? 
-    previousRecord.map((item: any) => ({... item, hasImages: !!item.hasImages})) : 
+    previousRecord.map((item: any) => ({...item, hasImages: !!item.hasImages})) : 
     [];
     
     const results = cars.map((currentCar) => {
