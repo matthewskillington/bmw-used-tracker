@@ -4,6 +4,7 @@ import { VehicleListing } from "./types.js";
 export const getCars = async (page: Page, url: string): Promise<Array<VehicleListing>> => {
     await page.goto(url, {
         waitUntil: "networkidle0",
+        timeout: 60000
     });
 
     return page.evaluate(() => {
