@@ -1,4 +1,4 @@
-const webhookUrl = "https://discord.com/api/webhooks/1196172460127686666/1JyrHZnCYx8asVL8T-NsoWvjYSH9asOrJcfQc7WP7bQv9WL7IJ-xiMZXdk3Xl7F40Ail";
+const webhookUrl = "";
 
 export const sendNotification = (payload: string) => {
     const data = { content: payload }
