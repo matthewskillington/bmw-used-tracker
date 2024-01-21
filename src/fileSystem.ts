@@ -2,9 +2,8 @@ import { Storage } from '@google-cloud/storage';
 import { PassThrough } from 'stream';
 
 const bucketName = 'used-bmw-data'
-const fileName = 'data.json'
 
-export const writeDataToCloudStorage = async (data: any) => {
+export const writeDataToCloudStorage = async (data: any, fileName = 'data.json') => {
   const storage = new Storage();
   const myBucket = storage.bucket(bucketName);
   const file = myBucket.file(fileName);
@@ -21,7 +20,7 @@ export const writeDataToCloudStorage = async (data: any) => {
   streamFileUpload().catch(console.error);
 }
 
-export const readDataFromCloudStorage = async () => {
+export const readDataFromCloudStorage = async (fileName = 'data.json') => {
   const storage = new Storage();
 
   async function downloadIntoMemory() {

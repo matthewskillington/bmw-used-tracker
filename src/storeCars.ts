@@ -10,4 +10,5 @@ export const storeCars = (cars: VehicleListing[]) => {
     const minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
     writeDataToCloudStorage(cars);
+    writeDataToCloudStorage(cars, `debug/${day}-${month}-${year}-${hours}${minutes}.json`)
 }
