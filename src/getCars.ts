@@ -38,51 +38,9 @@ const getUsedBmwCars = async (browser: Browser): Promise<Array<VehicleListing>> 
     })
 }
 
-const getAutotraderCars = async (browser: Browser): Promise<Array<VehicleListing>> => {
-    const url = "https://www.autotrader.co.uk/car-search?advertising-location=at_cars&fuel-type=Petrol&make=BMW&model=3%20Series&postcode=ng163rw&price-from=12000&price-to=30000&radius=100&sort=most-recent&transmission=Automatic&year-from=2014&year-to=2018"
-
-    const page = await browser.newPage();
-
-    await page.goto(url, {
-        waitUntil: 'networkidle0',
-        timeout: 30000,
-    })
-
-
-    return page.evaluate(() => {
-        const quoteList = document.querySelectorAll('.sc-fFlnrN.fXMRrm')
-        
-        const baseDetails = Array.from(quoteList).map((listing) => {
-            const qs = (selector: string) => listing.querySelector(selector);
-            const baseurl = "https://www.autotrader.co.uk/"
-
-            const id = qs('section.sc-iLsKjm')?.getAttribute('id');
-            console.log('id', id);
-            const name = qs('p.sc-dAlyuH')?.innerHTML;
-            const images = qs('span.sc-fulCBj')?.innerHTML;
-            const hasImages = Number(images) > 5;
-            const listingLink = qs('a.search-listing-title')?.getAttribute('href')
-            const isAd = !!qs('span.sc-cwHptR')
-
-            return {
-                id: id || null,
-                name: name || '',
-                hasImages: hasImages,
-                link: listingLink ? `${baseurl}${listingLink}` : 'not available',
-                isAd: isAd,
-            }
-        })
-        
-        return baseDetails.filter(x => x.id != null && !x.isAd);
-    })
-
-}
-
 export const getCars = async (browser: Browser): Promise<Array<VehicleListing>> => {
-    const [result1, result2] = await Promise.all([getUsedBmwCars(browser), getAutotraderCars(browser)]);
-    const combined = [...result1, ...result2];
-
-    console.log(result2)
+    const [result1] = await Promise.all([getUsedBmwCars(browser)]);
+    const combined = [...result1];
 
     return combined;
 
