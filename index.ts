@@ -33,8 +33,6 @@ export const entry = async () => {
         console.log('No updates since last time')
     }
 
-    storeCars(cars);
-
     await browser.close();
 }
 
